@@ -1,9 +1,9 @@
 import React from 'react'
 
-const List = ({children}) => {
+const List = ({children,className}) => {
   return (
     <div>
-      <ul>{children}</ul>
+      <ul className={className}>{children}</ul>
     </div>
   )
 }

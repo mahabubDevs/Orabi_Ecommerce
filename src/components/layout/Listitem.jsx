@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Listitem = ({itemname}) => {
+const Listitem = ({itemname,className}) => {
   return (
     <div>
-      <li>{itemname}</li>
+      <li className={className}>{itemname}</li>
     </div>
   )
 }
