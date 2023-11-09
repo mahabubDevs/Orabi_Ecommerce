@@ -1,5 +1,5 @@
 import Container from './Container'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Flex from './Flex'
 import Dropdown from './Dropdown'
 import {LiaBarsSolid} from 'react-icons/lia'
@@ -10,16 +10,24 @@ import List from './List'
 const Header = () => {
 
   let [show,setShow] = useState(false);
-  let handelDropdown =()=>{
-    setShow(!show)
-  }
+  let ref = useRef()
+
+  useEffect(()=>{
+    document.body.addEventListener("click", (e)=>{
+      if(ref.current.contains(e.target)){
+        setShow(true)
+      }else{
+        setShow(false)
+      }
+    })
+  },[])
 
   return (
     <div className='bg-[#F3F3F3]'>
         <Container >
             <Flex className="flex justify-between">
                <div>
-                <Dropdown onClick={handelDropdown}>
+                <Dropdown  dropref={ref}>
                 <p className='flex items-center gap-x-2.5 '>
                 <LiaBarsSolid/> Shop by Chatagory 
                 </p>
