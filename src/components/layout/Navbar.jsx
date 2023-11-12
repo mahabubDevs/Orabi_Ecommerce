@@ -23,7 +23,7 @@ const Navbar = () => {
   },[])
 
   return (
-    <nav>
+    <nav className='py-8'>
     <Container>
       <Flex className="lg:flex">
         <div className='lg:w-3/12'> 
