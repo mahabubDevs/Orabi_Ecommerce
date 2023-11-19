@@ -2,6 +2,7 @@ import Container from './Container'
 import React, { useEffect, useRef, useState } from 'react'
 import Flex from './Flex'
 import Dropdown from './Dropdown'
+import Images from './Images'
 import {LiaBarsSolid} from 'react-icons/lia'
 import Listitem from './Listitem'
 import List from './List'
@@ -9,14 +10,18 @@ import Search from './Search'
 import {FiSearch} from 'react-icons/fi'
 import {FaUserAlt,FaShoppingCart} from 'react-icons/fa'
 import {RxTriangleDown} from 'react-icons/rx'
+import { RxCross2 } from "react-icons/rx";
+import { Link } from 'react-router-dom'
 
 
 const Header = () => {
 
   let [catagoryDropDownShow,setCatagoryDropDownShow] = useState(false);
   let [userDropDownShow,setUserDropDownShow] = useState(false);
+  let [userCartDropDownShow,setCartDropDownShow] = useState(false);
   let catagoryDropDownRef = useRef()
   let userDropDownRef = useRef()
+  let cartDropDownRef = useRef()
 
   useEffect(()=>{
     document.body.addEventListener("click", (e)=>{
@@ -30,11 +35,16 @@ const Header = () => {
       }else{
         setUserDropDownShow(false)
       }
+      if(cartDropDownRef.current.contains(e.target)){
+        setCartDropDownShow(true)
+      }else{
+        setCartDropDownShow(false)
+      }
     })
   },[])
 
   return (
-    <div className='bg-[#F3F3F3] py-6'>
+    <div className='bg-[#F5F5F3] py-6'>
         <Container >
             <Flex className="flex justify-between">
                <div className='flex items-center'>
@@ -71,7 +81,38 @@ const Header = () => {
                 </List>
                 }
                     </Dropdown>
-                    <div><FaShoppingCart/></div>
+                    
+                      <div>
+                          <Dropdown className="relative" dropref={cartDropDownRef}>
+                              <FaShoppingCart className='text-xl'/> 
+                              {userCartDropDownShow && 
+                                <div className='w-[360px] absolute mt-3 right-[180px] border border-solid border-[#F0F0F0]  '>
+                                  <div className=' bg-[#F5F5F3] p-5'>
+                                  <Flex className="flex justify-between">
+                                      <div>
+                                        <Images imgsrc="../src/assets/cart.png" />
+                                      </div>
+                                      <div className='flex flex-col justify-center'>
+                                        <h3 className='font-dm font-bold text-sm text-primary'>Black Smart Watch</h3>
+                                        <p className='font-dm font-bold text-sm text-primary mt-3'>$44.00</p>
+                                      </div>
+                                      <div className='flex justify-end items-center'>
+                                      <RxCross2 className='text-sm'/>
+                                      </div>
+                                      
+                                  </Flex>
+                                  </div>
+                                  <div className='bg-white p-5 '>
+                                      <h4 className='font-dm text-regular font-base text-[#767676]' >Subtotal: <span className='font-bold text-primary'>$44.00</span> </h4>
+                                      <Link to="#" className='font-sm text-bold font-dm py-4 px-9 border border-solid border-primary inline-block mt-3'> View Cart</Link>
+                                      <Link to="#" className='font-sm text-bold font-dm py-4 px-9 border border-solid border-primary bg-primary text-white ml-5 inline-block mt-3'> CheckOut</Link>
+                                  </div>
+                                </div>
+
+                                }
+                          </Dropdown>
+                       </div>
+                    
                   </Flex>
                 </div>
             </Flex>
