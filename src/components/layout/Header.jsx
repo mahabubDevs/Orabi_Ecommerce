@@ -50,7 +50,7 @@ const Header = () => {
                <div className='flex items-center'>
                 <Dropdown className="relative" dropref={catagoryDropDownRef}>
                 <p className='flex items-center gap-x-2.5 font-dm font-reguler text-sm'>
-                <LiaBarsSolid/> Shop by Chatagory 
+                <LiaBarsSolid/> <span className='hidden lg:inline-block'>Shop by Chatagory </span>
                 </p>
                 {catagoryDropDownShow && 
                 <List className="absolute mt-3 w-[263px] bg-primary text-[#FCF4F2] font-dm font-reguler text-sm ">
@@ -63,7 +63,7 @@ const Header = () => {
                 }
                 </Dropdown>
                </div>
-                <div className='w-[600px] flex items-center font-dm font-reguler text-sm relative'>
+                <div className=' w-auto lg:w-[600px] flex items-center  font-dm font-reguler text-sm relative'>
                   <Search className="w-full py-4 px-5 placeholder:text-[#c4c4c4] " placeholder="Enter a search"/>
                   <FiSearch className='absolute top-4 right-3'/>
                 </div>
@@ -74,7 +74,7 @@ const Header = () => {
                       <FaUserAlt/> <RxTriangleDown/>
                     </div>
                     {userDropDownShow && 
-                <List className="absolute mt-3 right-[250px] w-[200px] bg-white text-[#cac9c9] font-dm font-reguler text-sm border border-solid border-[#F0F0F0] text-primary">
+                <List className="absolute mt-3 right-[70px] w-[200px] bg-white text-[#cac9c9] font-dm font-reguler text-sm border border-solid border-[#F0F0F0] text-primary">
                 <Listitem className="py-4 px-5 border-b border-solid border-[#F0F0F0] duration-300 ease-in hover:px-7 hover:text-white hover:font-bold hover:bg-primary" itemname="My Account"/>
                   <Listitem className="py-4 px-5 border-b border-solid border-[#F0F0F0] duration-300 ease-in hover:px-7 hover:text-white hover:font-bold hover:bg-primary" itemname="Log Out"/>
                   
@@ -86,7 +86,7 @@ const Header = () => {
                           <Dropdown className="relative" dropref={cartDropDownRef}>
                               <FaShoppingCart className='text-xl'/> 
                               {userCartDropDownShow && 
-                                <div className='w-[360px] absolute mt-3 right-[180px] border border-solid border-[#F0F0F0]  '>
+                                <div className='w-[360px] absolute mt-3 right-[70px] border border-solid border-[#F0F0F0]  '>
                                   <div className=' bg-[#F5F5F3] p-5'>
                                   <Flex className="flex justify-between">
                                       <div>
